@@ -17,7 +17,7 @@
 //   :::::: FORMULARIO  :     :        :          :
 ──────────────────────────────────────────────────── -->
 
-<!------------------------------------------------------- */
+<!------------------------------------------------------- 
 Para pasar variables post debemos definir el formulario con el method post, si coloco get las variables son visibles en la url
 /* -------------------------------------------------------->
 
@@ -37,9 +37,9 @@ Para pasar variables post debemos definir el formulario con el method post, si c
                     </span>
                 </div>
 
-                <!-- /* ------------------------------------------------------ */
+                <!-- ------------------------------------------------------ 
                 El campo name de los input, son las variables post que son pasadas a traves del formulario
-                /* ------------------------------------------------------ */ -->
+                 -------------------------------------------------------->
 
                 <input type="text" class="campo" id="validationCustom01" placeholder="Name that you want save" value="" name="formularioName" required>
                 <div class="valid-feedback">
@@ -52,7 +52,7 @@ Para pasar variables post debemos definir el formulario con el method post, si c
             <div class="mb-3 input-group">
                 <div class="input-group-prepend">
                     <span class="iconos text-white rounded-0"">
-                                    <i class=" far fa-envelope-open"></i>
+                        <i class=" far fa-envelope-open"></i>
                     </span>
                 </div>
                 <input type="mail" class="campo" id="validationCustom02" placeholder="Mail" value="" name="formularioEmail">
@@ -130,8 +130,17 @@ Para pasar variables post debemos definir el formulario con el method post, si c
 
     <?php
     $registro = new ControladorFormularios();
-    $registro->ctrRegistro();; ?>
+    $registro->ctrNoRegistrado(); ?>
 </form>
+
+
+<!-- ─── NOTE  ACCEDER A CLASES EN PHP ───────────────────────────────────────────────
+ *  El simbolo de flecha, se usa para acceder a los metodos o propiedades de un objeto, si de antemano hicimos una nueva instancia.
+ *  Instancia : Es un objeto de una clase existente.
+ *  $obj = new MyObject();
+ *  $obj->thisProperty = 'Fred';
+ -->
+
 <div class="pacman position-absolute"></div>
 
 

@@ -15,9 +15,8 @@ class ControladorKatir
 	}
 }
 
-//
-// ─── VARIABLES GET  ───────────────────────────────────────────
-/* -------------------------- 
+// ─── VARIABLES GET  ───────────────────────────
+/* 
 	NOTE 
 	Las variables get se pasan a travez de la url, es decir son visibles y se pasan de un archivo a otro 
 	- Estan en la url y la primera empieza con ? por ejemplo: 

@@ -1,50 +1,81 @@
 <?php
 
-class ControladorFormularios{
+class ControladorFormularios
+{
 
 	/*=============================================
 	Registro
 	=============================================*/
 
-	static public function ctrRegistro(){
+	/** funcion estatica
+	 *  Es una funcion o metodo que debe ser si o si llamado, a diferencia de una funcion no estatica en que es global, y si se llama siempre sera vista.
+	 * En cambio como en este caso, la funcion ctrRegistro() no sera visible, si no solo si se llama de la siguiente forma: 
+	 * $registro = ControladorFormularios::ctrRegistro();
+	 * Con los 2 puntos.
+	 *  En cambio para acceder a una funcion no estatica, solo basta con "new" y "->"
+	 **/
 
-		if(isset($_POST["registroNombre"])){
+	/**============================================
+	  Usuarios que no se registran y llegan a index
+	 *=============================================**/
+
+	public static function ctrNoRegistrado()
+	{
+		if (isset($_POST["formularioName"])) {
+			$formulario
+		}
+	}
+
+	/**============================================
+	 *Usarios que se registran
+	 *=============================================**/
+
+	static public function ctrRegistro()
+	{
+
+		if (isset($_POST["formularioName"])) {
+
+			/**============================================
+			 *Forma sencilla de probar que se esten enviando las variables post correctamente
+						echo "$_POST[formularioName]";                  
+			 *=============================================**/
 
 			$tabla = "registros";
 
-			$datos = array("nombre" => $_POST["registroNombre"],
-				           "email" => $_POST["registroEmail"],
-				           "password" => $_POST["registroPassword"]);
+			$datos = array(
+				"nombre" => $_POST["formularioName"],
+				"email" => $_POST["formularioEmail"],
+				"password" => $_POST["registroPassword"]
+			);
 
 			$respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
 
 			return $respuesta;
-
 		}
-
 	}
 
 	/*=============================================
 	Seleccionar Registros
 	=============================================*/
 
-	static public function ctrSeleccionarRegistros($item, $valor){
+	static public function ctrSeleccionarRegistros($item, $valor)
+	{
 
 		$tabla = "registros";
 
 		$respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
 
 		return $respuesta;
-
 	}
 
 	/*=============================================
 	Ingreso
 	=============================================*/
 
-	public function ctrIngreso(){
+	public function ctrIngreso()
+	{
 
-		if(isset($_POST["ingresoEmail"])){
+		if (isset($_POST["ingresoEmail"])) {
 
 			$tabla = "registros";
 			$item = "email";
@@ -52,7 +83,7 @@ class ControladorFormularios{
 
 			$respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
 
-			if($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]){
+			if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]) {
 
 				$_SESSION["validarIngreso"] = "ok";
 
@@ -67,8 +98,7 @@ class ControladorFormularios{
 					window.location = "index.php?pagina=inicio";
 
 				</script>';
-
-			}else{
+			} else {
 
 
 				echo '<script>
@@ -83,58 +113,54 @@ class ControladorFormularios{
 
 				echo '<div class="alert alert-danger">Error al ingresar al sistema, el email o la contraseña no coinciden</div>';
 			}
-			
-			
-
 		}
-
 	}
 
 	/*=============================================
 	Actualizar Registro
 	=============================================*/
-	static public function ctrActualizarRegistro(){
+	static public function ctrActualizarRegistro()
+	{
 
-		if(isset($_POST["actualizarNombre"])){
+		if (isset($_POST["actualizarNombre"])) {
 
-			if($_POST["actualizarPassword"] != ""){			
+			if ($_POST["actualizarPassword"] != "") {
 
 				$password = $_POST["actualizarPassword"];
-
-			}else{
+			} else {
 
 				$password = $_POST["passwordActual"];
 			}
 
 			$tabla = "registros";
 
-			$datos = array("id" => $_POST["idUsuario"],
-							"nombre" => $_POST["actualizarNombre"],
-				           "email" => $_POST["actualizarEmail"],
-				           "password" => $password);
+			$datos = array(
+				"id" => $_POST["idUsuario"],
+				"nombre" => $_POST["actualizarNombre"],
+				"email" => $_POST["actualizarEmail"],
+				"password" => $password
+			);
 
 			$respuesta = ModeloFormularios::mdlActualizarRegistro($tabla, $datos);
 
 			return $respuesta;
-
 		}
-
-
 	}
 
 	/*=============================================
 	Eliminar Registro
 	=============================================*/
-	public function ctrEliminarRegistro(){
+	public function ctrEliminarRegistro()
+	{
 
-		if(isset($_POST["eliminarRegistro"])){
+		if (isset($_POST["eliminarRegistro"])) {
 
 			$tabla = "registros";
 			$valor = $_POST["eliminarRegistro"];
 
 			$respuesta = ModeloFormularios::mdlEliminarRegistro($tabla, $valor);
 
-			if($respuesta == "ok"){
+			if ($respuesta == "ok") {
 
 				echo '<script>
 
@@ -147,12 +173,7 @@ class ControladorFormularios{
 					window.location = "index.php?pagina=inicio";
 
 				</script>';
-
 			}
-
 		}
-
 	}
-
-
 }

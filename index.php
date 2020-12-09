@@ -1,12 +1,9 @@
 <?php
 
 //
-// ──────────────────────────────────────────────────────────────────────────────── I ──────────
-//   ::::::ANCHOR L O G I C A   D E T R A S   D E   M V C : :  :   :    :     :        :          :
-// ──────────────────────────────────────────────────────────────────────────────────────────
-//
-//
-// ─── De forma breve ───────────────────────────────────────────────────────────────────────
+// ───────────────────────────────────────────────────────────────────
+//   ::::::ANCHOR L O G I C A   D E T R A S   D E   M V C           :
+// ─── De forma breve ─────────────────────────────────────────────
 //
 // NOTE 
 // Vista:lo que tu ves en la web, este la pasa al -> 
@@ -15,7 +12,7 @@
 
 require_once "controller/katir.controller.php";
 require_once "controller/formularios.controller.php";
-
+// require_once "modelos/formularios.modelo.php";
 
 $katir = new ControladorKatir();
 $katir->ctrTraerKatir();
