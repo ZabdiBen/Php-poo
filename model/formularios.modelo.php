@@ -4,6 +4,30 @@ require_once "conexion.php";
 
 class ModeloFormularios
 {
+	/**============================================
+	 *CONTACTOS DE USUARIO NO REGISTRADO
+	 *=============================================**/
+	static public function mdlNoRegistrado($tablaNoRegistrados, $datos)
+	{
+		#INSER INTO es del lenguaje mysql y los : antes de los nombres es por que son parametros ocultos.
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tablaNoRegistrados (name_noRegistrados, email_noRegistrados, phone_noRegistrados, photo_noRegistrados, notes_noRegistrados) VALUES (:name_noRegistrados, :email_noRegistrados, :phone_noRegistrados, :photo_noRegistrados, :notes_noRegistrados)");
+
+		#BINDPARAM recibe 3 parametros 
+		$stmt->bindParam(":name_noRegistrados", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":email_noRegistrados", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":phone_noRegistrados", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":photo_noRegistrados", $datos["foto"], PDO::PARAM_STR);
+		$stmt->bindParam(":notes_noRegistrados", $datos["nota"], PDO::PARAM_STR);
+
+		if ($stmt->execute()) {
+			return "ok";
+		} else {
+			print_r(Conexion::conectar()->errorInfo());
+		}
+		$stmt = null;
+	}
+
+
 
 	/*=============================================
 	Registro
@@ -11,7 +35,6 @@ class ModeloFormularios
 
 	static public function mdlRegistro($tabla, $datos)
 	{
-
 		#statement: declaración
 
 		#prepare() Prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute(). La sentencia SQL puede contener cero o más marcadores de parámetros con nombre (:name) o signos de interrogación (?) por los cuales los valores reales serán sustituidos cuando la sentencia sea ejecutada. Ayuda a prevenir inyecciones SQL eliminando la necesidad de entrecomillar manualmente los parámetros.

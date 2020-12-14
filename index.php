@@ -1,6 +1,5 @@
 <?php
 
-//
 // ───────────────────────────────────────────────────────────────────
 //   ::::::ANCHOR L O G I C A   D E T R A S   D E   M V C           :
 // ─── De forma breve ─────────────────────────────────────────────
@@ -12,7 +11,7 @@
 
 require_once "controller/katir.controller.php";
 require_once "controller/formularios.controller.php";
-// require_once "modelos/formularios.modelo.php";
+require_once "model/formularios.modelo.php";
 
 $katir = new ControladorKatir();
 $katir->ctrTraerKatir();

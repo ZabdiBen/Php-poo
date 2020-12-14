@@ -21,7 +21,7 @@
 Para pasar variables post debemos definir el formulario con el method post, si coloco get las variables son visibles en la url
 /* -------------------------------------------------------->
 
-<form class="container pt-5 pb-2 bg-success rounded mb-5 " style="width: 80%;" method="post">
+<form class="container pt-5 pb-2 bg-success rounded mb-5 " style="width: 80%;" method="post" id="formulario">
 
     <!------------------------------------------------------ */
                 SECTION      Nombre y mail          
@@ -94,7 +94,7 @@ Para pasar variables post debemos definir el formulario con el method post, si c
                      <i class=" fas fa-camera-retro"></i>
                 </span>
             </div>
-            <input type="file" class="campo" id="validationCustom03" placeholder="Photo" required name="formularioPhoto">
+            <input type="file" class="campo" id="validationCustom03" placeholder="Photo" name="formularioPhoto">
             <div class="invalid-feedback">
                 Please provide a valid Photo.
             </div>
@@ -113,15 +113,16 @@ Para pasar variables post debemos definir el formulario con el method post, si c
                             <i class=" far fa-sticky-note"></i>
                 </span>
             </div>
-            <input type="text" class="campo" id="validationCustom04" placeholder="Notes about the contact" name="formularioNotes">
+            <input type="text" class="campo" id="validationCustom04" placeholder="Notes about the contact" name="formularioNote">
             <div class="invalid-feedback">
                 Please provide a valid state.
             </div>
         </div>
     </div>
-    <!----------------------------------------------------- */
-    /*             SECTION    Save                          */
-    /* ---------------------------------------------------->
+
+    <!----------------------------------------------------- 
+                                Save                          
+     ---------------------------------------------------->
     <div class="text-right my-5">
         <button class="btn btn-info mr-4" type="submit">
             <i class="px-5 py-1 fa-2x fas fa-paper-plane"></i>
@@ -129,9 +130,29 @@ Para pasar variables post debemos definir el formulario con el method post, si c
     </div>
 
     <?php
-    $registro = new ControladorFormularios();
-    $registro->ctrNoRegistrado(); ?>
+    $registro = ControladorFormularios::ctrNoRegistrado();
+    if ($registro == "ok") {
+        echo '<script>
+
+        console.log("fue correcto");
+
+        if ( window.history.replaceState ) {
+
+            window.history.replaceState( null, null, window.location.href );
+
+        }
+                
+        mostrarNotificacion("bien", "correcto");
+
+        </script>';
+
+        echo 'ok';
+    } else {
+        echo '<script>console.log("No se ha llamado al formulario o hay un error");</script>';
+    }
+    ?>
 </form>
+
 
 
 <!-- ─── NOTE  ACCEDER A CLASES EN PHP ───────────────────────────────────────────────
@@ -144,39 +165,10 @@ Para pasar variables post debemos definir el formulario con el method post, si c
 <div class="pacman position-absolute"></div>
 
 
-<!--───────────────────────────────────────────────────
-    //   :::::: TABLA    :     :        :          :
-    // ────────────────────────────────────────────────────-->
+<!--────────────────────────TABLA ─────────────────────────────-->
 
 <?php require_once "contactos.php"; ?>
 
 
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
-
-
-<script src="https://kit.fontawesome.com/5139b503c0.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-</body>
-
-</html>
+<!--────────────────────────FOOTER ─────────────────────────────-->
+<?php require_once "footer.php"; ?>

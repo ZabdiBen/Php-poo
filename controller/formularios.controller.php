@@ -1,5 +1,10 @@
 <?php
 
+/**
+ *  De aca se pasa a modelos que es donde se hace la peticion a la base de datos.
+ *  view -> controller -> model
+ **/
+
 class ControladorFormularios
 {
 
@@ -19,12 +24,26 @@ class ControladorFormularios
 	  Usuarios que no se registran y llegan a index
 	 *=============================================**/
 
-	public static function ctrNoRegistrado()
+	static public function ctrNoRegistrado()
 	{
 		if (isset($_POST["formularioName"])) {
-			$formulario
+			#LA TABLA DE MYSQL NO PUEDE LLEVAR - DE SEPARACION ENTRE PALABRAS
+			$tablaNoRegistrados = "no_registrados";
+
+			$datos = array(
+				"nombre" => $_POST["formularioName"],
+				"email" => $_POST["formularioEmail"],
+				"telefono" => $_POST["formularioPhone"],
+				"foto" => $_POST["formularioPhoto"],
+				"nota" => $_POST["formularioNote"],
+			);
+
+			$respuesta = ModeloFormularios::mdlNoRegistrado($tablaNoRegistrados, $datos);
+
+			return $respuesta;
 		}
 	}
+
 
 	/**============================================
 	 *Usarios que se registran
