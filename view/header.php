@@ -16,3 +16,14 @@
 </head>
 
 <body>
+    <div class="triangulo position-absolute"></div>
+    <div class="trapecio position-absolute"></div>
+
+    <div class="container">
+        <div class="py-3">
+            <h2 class="text-center titulo text-white">Katir</h2>
+            <hr class="bg-warning py-2">
+        </div>
+        <h4 class="text-center texto text-white">Agend of contacts with JQUERY, PHP OOP, BOOTSTRAP</h4>
+        <p class="text-center texto text-white" style="font-size: 1.3rem">Please don't save important information, is just a prototype !!!</p>
+    </div>

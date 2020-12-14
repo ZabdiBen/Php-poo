@@ -19,14 +19,38 @@ class ModeloFormularios
 		$stmt->bindParam(":photo_noRegistrados", $datos["foto"], PDO::PARAM_STR);
 		$stmt->bindParam(":notes_noRegistrados", $datos["nota"], PDO::PARAM_STR);
 
+		#SI SE ESCRIBE 2 VECES EXECUTE SE ENVIA 2 VECES LAS VARIABLES POST
 		if ($stmt->execute()) {
 			return "ok";
 		} else {
+			// return "error";
 			print_r(Conexion::conectar()->errorInfo());
 		}
+		#YA el metodo close() es obsoleto, no es necesario colocarlo
+		// $stmt->close();
 		$stmt = null;
 	}
 
+	/*=============================================
+	Seleccionar contactos de un usuario no logeado
+	=============================================*/
+
+	static public function mdlSeleccionarContactos($tabla)
+	{
+		#aca tengo que selescionar con mysql que quiero que traiga
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+
+		$stmt->execute();
+
+		/**
+		 * * Diferencia entre fetch y fetchAll
+		 * fetch devulve no mas un registro
+		 * fetchAll devuelve todos
+		 **/
+		return $stmt->fetchAll();
+
+		$stmt = null;
+	}
 
 
 	/*=============================================
@@ -55,38 +79,6 @@ class ModeloFormularios
 			print_r(Conexion::conectar()->errorInfo());
 		}
 
-		$stmt->close();
-
-		$stmt = null;
-	}
-
-	/*=============================================
-	Seleccionar Registros
-	=============================================*/
-
-	static public function mdlSeleccionarRegistros($tabla, $item, $valor)
-	{
-
-		if ($item == null && $valor == null) {
-
-			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha FROM $tabla ORDER BY id DESC");
-
-			$stmt->execute();
-
-			return $stmt->fetchAll();
-		} else {
-
-			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha FROM $tabla WHERE $item = :$item ORDER BY id DESC");
-
-			$stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
-
-			$stmt->execute();
-
-			return $stmt->fetch();
-		}
-
-		$stmt->close();
-
 		$stmt = null;
 	}
 
@@ -112,8 +104,6 @@ class ModeloFormularios
 			print_r(Conexion::conectar()->errorInfo());
 		}
 
-		$stmt->close();
-
 		$stmt = null;
 	}
 
@@ -134,8 +124,6 @@ class ModeloFormularios
 
 			print_r(Conexion::conectar()->errorInfo());
 		}
-
-		$stmt->close();
 
 		$stmt = null;
 	}

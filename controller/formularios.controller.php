@@ -44,6 +44,19 @@ class ControladorFormularios
 		}
 	}
 
+	/*=============================================
+	Seleccionar Registros de contactos de un usuario que no se ha registrado
+	=============================================*/
+
+	static public function ctrSeleccionarContactos()
+	{
+		$tabla = "no_registrados";
+
+		$respuesta = ModeloFormularios::mdlSeleccionarContactos($tabla);
+
+		return $respuesta;
+	}
+
 
 	/**============================================
 	 *Usarios que se registran
@@ -71,20 +84,6 @@ class ControladorFormularios
 
 			return $respuesta;
 		}
-	}
-
-	/*=============================================
-	Seleccionar Registros
-	=============================================*/
-
-	static public function ctrSeleccionarRegistros($item, $valor)
-	{
-
-		$tabla = "registros";
-
-		$respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
-
-		return $respuesta;
 	}
 
 	/*=============================================
