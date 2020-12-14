@@ -134,21 +134,14 @@ Para pasar variables post debemos definir el formulario con el method post, si c
     if ($registro == "ok") {
         echo '<script>
 
-        console.log("fue correcto");
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+            </script>';
 
-        if ( window.history.replaceState ) {
-
-            window.history.replaceState( null, null, window.location.href );
-
-        }
-                
-        mostrarNotificacion("bien", "correcto");
-
-        </script>';
-
-        echo 'ok';
+        echo '<p class="ok d-none">ok</p>';
     } else {
-        echo '<script>console.log("No se ha llamado al formulario o hay un error");</script>';
+        // echo '<p class="error d-none">error</p>';
     }
     ?>
 </form>

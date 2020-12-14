@@ -1,12 +1,8 @@
 //funcion auto invocada (function(){}());
 (function (){
-const fcontact = document.querySelector("#formulario");
-console.log('fcontact', fcontact)
-
-evenLisener();
-function evenLisener() {
-        fcontact.addEventListener('click', console.log("hola me llamas"));
-}
+const fcontact = document.querySelector("#formulario"),
+      ok = document.querySelector(".ok"),
+      error = document.querySelector(".error");
 
 // Notifación en pantalla
 function mostrarNotificacion(mensaje, clase) {
@@ -27,7 +23,13 @@ function mostrarNotificacion(mensaje, clase) {
             }, 500)
         }, 3000);
     }, 100);
+    console.log("me estas invocando");
+}
 
+if(ok){
+    mostrarNotificacion("Contact saved", "correcto");
+}else if(error){
+    mostrarNotificacion("It was a error", "error")
 }
 
 
