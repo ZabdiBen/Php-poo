@@ -83,19 +83,13 @@
 
     if ($registro == "ok") {
         echo '<script>
-
 				if ( window.history.replaceState ) {
-
 					window.history.replaceState( null, null);
-
 				}
-
             </script>';
         echo '<p class="ok d-none"> ok </p>';
         $registro = "";
     }
-
-
     ?>
 
     <div class="text-right my-3">

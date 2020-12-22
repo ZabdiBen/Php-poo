@@ -24,6 +24,14 @@
 .texto {
   font-family: "Nerko One", cursive;
 }
+/* ─── FORMULARIO DE ACTUALIZACION ──────────────────────────────────────────────── */
+.factualizar{
+  background-color: rgb(211, 102, 0);
+ }
+.factualizar input:focus{
+  background-color:rgb(187, 91, 2);
+}
+/* ───FIN FORMULARIO DE ACTUALIZACION ───────────────────────────────────────── */ 
 
 .campo {
   padding: 0.375rem 0.75rem;
@@ -92,12 +100,24 @@ hr {
   top: 700px;
 }
 
-.iconosEditar {
+.iconosContactos{
   right: 1rem;
-  top: -2px;
+  top: -5px;
   color: rgb(255, 255, 255);
   z-index: 1;
-  cursor: pointer;
+}
+
+.botonesContactos{
+  background-color: rgb(240, 116, 0);
+  color: white;
+  border: none;
+  transition: transform .2s; /* Animation */
+}
+.botonesContactos:hover{
+  transform: scale(1.2);
+}
+.botonesContactos:focus{
+  outline: none;
 }
 
 
@@ -119,7 +139,7 @@ hr {
 /*── Colores de la notificacion─────────────────────────────────────────────────────── */
 
 .correcto {
-  background-color: rgb(179, 241, 117);
+  background-color: rgb(206, 255, 158);
   color: green;
 }
 

@@ -2,28 +2,39 @@
 $contactos = ControladorFormularios::ctrSeleccionarContactos();
 ?>
 
+<!-- ─── DIVS DE CONTACTOS ──────────────────────────────────────────────────────────-->
+
 <div class="tabla pt-3">
   <div class="container mt-5 d-flex flex-wrap">
 
     <?php foreach ($contactos as $key => $value) : ?>
 
       <div class="col-md-4">
-        <span class="position-absolute iconosEditar">
-          <!-- Iconos de editar y borrar --->
-          <i class="fa-lg fas fa-user-edit mr-3 shadow"></i>
-          <i class="fa-lg fas fa-trash-alt shadow"></i>
+        <!-- ─── Iconos de editar y borrar ──────────────────────-->
+        <span class="position-absolute iconosContactos">
+
+          <!-- button de modal -->
+          <button type="button" class="mr-3 botonesContactos py-2 px-1 rounded-top" data-toggle="modal" data-target="#editar<?php echo $value["id_noRegistrados"]; ?>" data-id="<?php echo $boton["id_noRegistrados"]; ?>">
+            <i class="fa-lg fas fa-user-edit "></i>
+          </button>
+
+          <button class="botonesContactos py-2 px-1 rounded-top">
+            <i class="fa-lg fas fa-trash-alt "></i>
+          </button>
         </span>
+        <!-- ─── FIN de Iconos de editar y borrar ──────────────-->
+
         <!-- Widget: user widget style 1 -->
         <div class="card card-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header bg-info">
-            <span class="d-none"><?php echo $value["id_noRegistrados"]; ?></span>
+            <!-- <span class="d-none"><?php echo $value["id_noRegistrados"]; ?></span> -->
             <h3 class="widget-user-username"><?php echo $value["name_noRegistrados"]; ?></h3>
             <h5 class="widget-user-desc"><?php echo $value["email_noRegistrados"]; ?></h5>
           </div>
           <div class="widget-user-image">
             <!--! WARNING tengo que arreglar lo de la imagen aca --->
-            <img class="img-circle elevation-2" src="view/img/user1-128x128.jpg" alt="User Avatar">
+            <img class="img-circle elevation-2" src="view/img/user4-128x128.jpg" alt="User Avatar">
           </div>
           <div class="card-footer">
             <div class="">
@@ -39,8 +50,16 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
           <!-- /.widget-user -->
         </div>
       </div>
-
     <?php endforeach ?>
+
+    <!-- ─── TRIGGER MODAL ───────────────────────────────────────────────────────-->
+
+    <?php
+    require_once "view/edit.php"; ?>
+
+    <!-- ─── FIN TRIGGER MODAL ─────────────────────────────────────────────-->
+
+
 
   </div>
 </div>
