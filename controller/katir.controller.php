@@ -9,7 +9,6 @@ class ControladorKatir
 
 	public function ctrTraerKatir()
 	{
-
 		#include() Se utiliza para invocar el archivo que contiene código html-php.
 		include "view/formulario.php";
 	}

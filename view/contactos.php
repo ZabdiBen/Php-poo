@@ -1,5 +1,9 @@
 <?php
 $contactos = ControladorFormularios::ctrSeleccionarContactos();
+$actualizar = ControladorFormularios::ctrActualizarContactos();
+if ($actualizar == "ok") {
+  echo '<p class="actualizar d-none"> actualizar </p>';
+}
 ?>
 
 <!-- ─── DIVS DE CONTACTOS ──────────────────────────────────────────────────────────-->
@@ -51,14 +55,13 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
         </div>
       </div>
     <?php endforeach ?>
-
+    <!-- ───  DIVS DE CONTACTOS ──────────────────────────────────────────────────────────-->
     <!-- ─── TRIGGER MODAL ───────────────────────────────────────────────────────-->
 
     <?php
     require_once "view/edit.php"; ?>
 
     <!-- ─── FIN TRIGGER MODAL ─────────────────────────────────────────────-->
-
 
 
   </div>

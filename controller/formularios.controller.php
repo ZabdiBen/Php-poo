@@ -57,110 +57,26 @@ class ControladorFormularios
 		return $respuesta;
 	}
 
-
-	/**============================================
-	 *Usarios que se registran
-	 *=============================================**/
-
-	static public function ctrRegistro()
+	/*=============================================
+	Actualizar contactos de usuarios no registrados
+	=============================================*/
+	static public function ctrActualizarContactos()
 	{
+		if (isset($_POST["editar"])) {
 
-		if (isset($_POST["formularioName"])) {
-
-			/**============================================
-			 *Forma sencilla de probar que se esten enviando las variables post correctamente
-						echo "$_POST[formularioName]";                  
-			 *=============================================**/
-
-			$tabla = "registros";
+			$tablaActualizar = "no_registrados";
+			$id = $_POST['idUsuario'];
+			$idNum = (int) $id;
 
 			$datos = array(
-				"nombre" => $_POST["formularioName"],
-				"email" => $_POST["formularioEmail"],
-				"password" => $_POST["registroPassword"]
-			);
-
-			$respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
-
-			return $respuesta;
-		}
-	}
-
-	/*=============================================
-	Ingreso
-	=============================================*/
-
-	public function ctrIngreso()
-	{
-
-		if (isset($_POST["ingresoEmail"])) {
-
-			$tabla = "registros";
-			$item = "email";
-			$valor = $_POST["ingresoEmail"];
-
-			$respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
-
-			if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $_POST["ingresoPassword"]) {
-
-				$_SESSION["validarIngreso"] = "ok";
-
-				echo '<script>
-
-					if ( window.history.replaceState ) {
-
-						window.history.replaceState( null, null, window.location.href );
-
-					}
-
-					window.location = "index.php?pagina=inicio";
-
-				</script>';
-			} else {
-
-
-				echo '<script>
-
-					if ( window.history.replaceState ) {
-
-						window.history.replaceState( null, null, window.location.href );
-
-					}
-
-				</script>';
-
-				echo '<div class="alert alert-danger">Error al ingresar al sistema, el email o la contraseña no coinciden</div>';
-			}
-		}
-	}
-
-	/*=============================================
-	Actualizar Registro
-	=============================================*/
-	static public function ctrActualizarRegistro()
-	{
-
-		if (isset($_POST["actualizarNombre"])) {
-
-			if ($_POST["actualizarPassword"] != "") {
-
-				$password = $_POST["actualizarPassword"];
-			} else {
-
-				$password = $_POST["passwordActual"];
-			}
-
-			$tabla = "registros";
-
-			$datos = array(
-				"id" => $_POST["idUsuario"],
-				"nombre" => $_POST["actualizarNombre"],
+				"id" => $idNum,
+				"nombre" => $_POST["actualizarName"],
 				"email" => $_POST["actualizarEmail"],
-				"password" => $password
+				"telefono" => $_POST["actualizarPhone"],
+				"foto" => $_POST["actualizarPhoto"],
+				"nota" => $_POST["actualizarNote"]
 			);
-
-			$respuesta = ModeloFormularios::mdlActualizarRegistro($tabla, $datos);
-
+			$respuesta = ModeloFormularios::mdlActualizarNoRegistrado($tablaActualizar, $datos);
 			return $respuesta;
 		}
 	}

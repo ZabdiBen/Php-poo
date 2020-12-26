@@ -1,10 +1,11 @@
 <?php require_once "header.php";
 #Para pasar variables post debemos definir el formulario con el method post, si coloco get las variables son visibles en la url 
+
 ?>
 
 <!--──────────────────────── FORMULARIO  ─────────────────────────────-->
 
-<form class="container pt-5 pb-2 bg-success rounded mb-5 " style="width: 80%;" method="post" id="formulario">
+<form class="container pt-3 pb-2 bg-success rounded mb-5 formularioPrincipal" method="post" id="formulario">
 
     <!----------- *   Nombre y mail    --->
 
@@ -58,6 +59,7 @@
                         <i class=" fas fa-camera-retro"></i>
                 </span>
             </div>
+
             <input type="file" class="campo" id="validationCustom03" placeholder="Photo" name="formularioPhoto">
         </div>
     </div>
@@ -72,7 +74,7 @@
                                 <i class=" far fa-sticky-note"></i>
                 </span>
             </div>
-            <input type="text" class="campo" id="validationCustom04" placeholder="Notes about the contact" name="formularioNote">
+            <textarea placeholder="Notes about the contact" class="campo" id="validationCustom04" name="formularioNote"></textarea>
         </div>
     </div>
 
