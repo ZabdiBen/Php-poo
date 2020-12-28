@@ -82,32 +82,19 @@ class ControladorFormularios
 	}
 
 	/*=============================================
-	Eliminar Registro
+	Eliminar contactos de usuarios no registrados
 	=============================================*/
-	public function ctrEliminarRegistro()
+	public function ctrEliminarcontactos()
 	{
 
-		if (isset($_POST["eliminarRegistro"])) {
+		if (isset($_POST["eliminarContacto"])) {
 
-			$tabla = "registros";
-			$valor = $_POST["eliminarRegistro"];
+			$tabla = "no_registrados";
+			$valor = $_POST["id"];
 
 			$respuesta = ModeloFormularios::mdlEliminarRegistro($tabla, $valor);
 
-			if ($respuesta == "ok") {
-
-				echo '<script>
-
-					if ( window.history.replaceState ) {
-
-						window.history.replaceState( null, null, window.location.href );
-
-					}
-
-					window.location = "index.php?pagina=inicio";
-
-				</script>';
-			}
+			return $respuesta;
 		}
 	}
 }

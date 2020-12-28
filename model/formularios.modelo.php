@@ -83,16 +83,13 @@ class ModeloFormularios
 	=============================================*/
 	static public function mdlEliminarRegistro($tabla, $valor)
 	{
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_noRegistrados = :id");
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
-
-		$stmt->bindParam(":id", $valor, PDO::PARAM_STR);
+		$stmt->bindParam(":id", $valor, PDO::PARAM_INT);
 
 		if ($stmt->execute()) {
-
 			return "ok";
 		} else {
-
 			print_r(Conexion::conectar()->errorInfo());
 		}
 

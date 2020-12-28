@@ -99,7 +99,6 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
                             <button type="button" class="btn btn-danger" data-dismiss="modal">
                                 <i class="px-3 py-1 fa-2x fas fa-times"></i>
                             </button>
-                            <!-- * QUIERO COLOCAR UNA CONDICIONAL PARA QUE ESTE SE MUESTRE SOLO EN EL CONTACTO -->
 
                             <input type="hidden" name="editar" value="editar">
                             <button type="submit" class="btn btn-primary">
@@ -114,12 +113,8 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
 
                             echo '<script>
                             if ( window.history.replaceState ) {
-                                window.history.go(1);
                                 window.history.replaceState( null, null, window.location.href );
                             }
-                            // setTimeout(function(){
-                            //     window.location = window.location.href;
-                            // }, );
                                 </script>';
                         };
 

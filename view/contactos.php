@@ -1,9 +1,15 @@
 <?php
-$contactos = ControladorFormularios::ctrSeleccionarContactos();
+$eliminar = new ControladorFormularios();
+$eliminar->ctrEliminarcontactos();
+if ($eliminar == "ok") {
+  echo '<p class="eliminar d-none"> eliminar </p>';
+}
 $actualizar = ControladorFormularios::ctrActualizarContactos();
 if ($actualizar == "ok") {
   echo '<p class="actualizar d-none"> actualizar </p>';
 }
+$contactos = ControladorFormularios::ctrSeleccionarContactos();
+
 ?>
 
 <!-- ─── DIVS DE CONTACTOS ──────────────────────────────────────────────────────────-->
@@ -22,17 +28,17 @@ if ($actualizar == "ok") {
             <i class="fa-lg fas fa-user-edit "></i>
           </button>
 
-          <button class="botonesContactos py-2 px-1 rounded-top">
-            <i class="fa-lg fas fa-trash-alt "></i>
+          <button type="button" class="botonesContactos py-2 px-1 rounded-top" data-toggle="modal" data-target="#eliminar<?php echo $value["id_noRegistrados"]; ?>">
+            <i class=" fa-lg fas fa-trash-alt "></i>
           </button>
+
         </span>
         <!-- ─── FIN de Iconos de editar y borrar ──────────────-->
 
         <!-- Widget: user widget style 1 -->
-        <div class="card card-widget widget-user">
+        <div class=" card card-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header bg-info">
-            <!-- <span class="d-none"><?php echo $value["id_noRegistrados"]; ?></span> -->
             <h3 class="widget-user-username"><?php echo $value["name_noRegistrados"]; ?></h3>
             <h5 class="widget-user-desc"><?php echo $value["email_noRegistrados"]; ?></h5>
           </div>
@@ -60,6 +66,13 @@ if ($actualizar == "ok") {
 
     <?php
     require_once "view/edit.php"; ?>
+
+    <!-- ─── FIN TRIGGER MODAL ─────────────────────────────────────────────-->
+
+    <!-- ─── TRIGGER MODAL ELIMINAR───────────────────────────────────────────────────────-->
+
+    <?php
+    require_once "view/delete.php"; ?>
 
     <!-- ─── FIN TRIGGER MODAL ─────────────────────────────────────────────-->
 

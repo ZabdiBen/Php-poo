@@ -3,6 +3,7 @@
 const fcontact = document.querySelector("#formulario"),
       ok = document.querySelector(".ok"),
       actualizar = document.querySelector(".actualizar"),
+      eliminar = document.querySelector(".eliminar"),
       error = document.querySelector(".error");
 
 // Notifación en pantalla
@@ -34,6 +35,11 @@ if(ok){
 }
 if(actualizar){
     mostrarNotificacion("Contact updated", "correcto");
+}else if(error){
+    mostrarNotificacion("It was a error", "error")
+}
+if(eliminar){
+    mostrarNotificacion("Contact deleted", "correcto");
 }else if(error){
     mostrarNotificacion("It was a error", "error")
 }
