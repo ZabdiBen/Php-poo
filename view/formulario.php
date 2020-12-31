@@ -5,7 +5,8 @@
 
 <!--──────────────────────── FORMULARIO  ─────────────────────────────-->
 
-<form class="container pt-3 pb-2 bg-success rounded mb-5 formularioPrincipal" method="post" id="formulario">
+<!-- usamos enctype para encriptar los datos enviados -->
+<form class="container pt-3 pb-2 bg-success rounded mb-5 formularioPrincipal" method="post" id="formulario" enctype="multipart/form-data">
 
     <!----------- *   Nombre y mail    --->
 
@@ -60,7 +61,11 @@
                 </span>
             </div>
 
-            <input type="file" class="campo" id="validationCustom03" placeholder="Photo" name="formularioPhoto">
+            <input type="file" class="campo d-none" id="fotoFormulario" placeholder="Photo" name="formularioPhoto">
+
+            <label for="fotoFormulario" class="">
+                <img src="view/img/user/default.jpg" alt="User Avatar" class="imagenFormulario img-circle elevation-2 prevfotoFormulario">
+            </label>
         </div>
     </div>
 

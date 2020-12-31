@@ -63,6 +63,10 @@ input{
   -webkit-transition: width .35s ease-in-out;
   transition: width .35s ease-in-out;
 }
+.imagenFormulario{
+  height: auto;
+  width: 80px;
+}
 input:focus {
   outline: none;
   background-color:rgb(3, 148, 51);
@@ -89,8 +93,11 @@ hr {
 
 /* ─── TABLA ────────────────────────────────────────────────────────────────────── */
 .tabla {
-  background-color: rgba(209, 209, 209, 0.719);
-  border-radius: 4rem;
+  background: #4AC29A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #BDFFF3, #4AC29A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 2rem;
 }
 ::placeholder{ 
   color: white;
@@ -165,4 +172,16 @@ hr {
 .error {
   background-color: rgb(238, 148, 166);
   color: rgb(163, 0, 33);
+}
+
+/*── FOOTER────────────────────────────────────────────────── */
+
+.fuder {
+  background: #373B44;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.zabdi{
+  font-family: 'Sansita Swashed', cursive;
 }

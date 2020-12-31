@@ -1,6 +1,5 @@
 <?php
-$eliminar = new ControladorFormularios();
-$eliminar->ctrEliminarcontactos();
+$eliminar = ControladorFormularios::ctrEliminarcontactos();
 if ($eliminar == "ok") {
   echo '<p class="eliminar d-none"> eliminar </p>';
 }
@@ -44,7 +43,7 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
           </div>
           <div class="widget-user-image">
             <!--! WARNING tengo que arreglar lo de la imagen aca --->
-            <img class="img-circle elevation-2" src="view/img/user4-128x128.jpg" alt="User Avatar">
+            <img class="img-circle elevation-2" src="<?php echo $value["photo_noRegistrados"]; ?>" alt="User Avatar">
           </div>
           <div class="card-footer">
             <div class="">

@@ -22,7 +22,7 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
                 <div class="modal-body">
 
                     <!--// ────────FORMULARIO──────────────────────────────────────────────────────────-->
-                    <form class="pl-3 pt-1 pb-2 factualizar rounded" method="POST" id="formulario">
+                    <form class="pl-3 pt-1 pb-2 factualizar rounded" method="POST" id="formulario" enctype="multipart/form-data">
 
                         <!----------- *   Nombre y mail    --->
                         <div class="form-row">
@@ -71,13 +71,16 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="iconos text-white rounded-0"">
-                            <i class=" fas fa-camera-retro"></i>
+                                        <i class=" fas fa-camera-retro"></i>
                                     </span>
                                 </div>
-                                <input type="file" class="campo" id="validationCustom03" placeholder="Photo" name="actualizarPhoto">
+                                <input type="file" class="campo d-none" id="fotoFormulario" name="foto">
+
+                                <label for="fotoFormulario">
+                                    <img src="<?php echo $boton["photo_noRegistrados"]; ?>" alt="User Avatar" class="imagenFormulario img-circle elevation-2 prevfotoFormulario">
+                                </label>
                             </div>
                         </div>
-
                         <!----------------------------------  SECTION NOTES  --------->
 
                         <div class=" mb-3 p-0">
@@ -90,22 +93,11 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
                                 </div>
                                 <textarea class="campo" name="actualizarNote"><?php echo $boton["notes_noRegistrados"]; ?></textarea>
                             </div>
+                            <input name="idUsuario" type="hidden" value="<?php echo $id; ?>">
                         </div>
-                        <input name="idUsuario" type="hidden" value="<?php echo $id; ?>">
+
 
                         <!-------------------------------- Save ------------------------>
-
-                        <div class="modal-footer border-0">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                <i class="px-3 py-1 fa-2x fas fa-times"></i>
-                            </button>
-
-                            <input type="hidden" name="editar" value="editar">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="px-5 py-1 fa-2x fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-
                         <?php
                         $actualizar = ControladorFormularios::ctrActualizarContactos();
 
@@ -119,6 +111,19 @@ $contactos = ControladorFormularios::ctrSeleccionarContactos();
                         };
 
                         ?>
+
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                <i class="px-3 py-1 fa-2x fas fa-times"></i>
+                            </button>
+
+                            <input type="hidden" name="editar" value="editar">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="px-5 py-1 fa-2x fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+
+
                     </form>
                     <!--// ────────FIN DE FORMULARIO────────────────────────────────────────────────────-->
 
